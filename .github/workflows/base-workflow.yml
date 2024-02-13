@@ -21,4 +21,5 @@ jobs:
         docker-compose exec -T movies ./entrypoint.sh
         docker-compose exec -T movies ruff check . --exclude=env
         docker-compose exec -T movies pytest
+        docker-compose exec movies pytest -p no:warnings --cov=.
           
