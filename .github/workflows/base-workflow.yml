@@ -16,8 +16,8 @@ jobs:
       - name: Run tests
         run: |
           docker-compose up -d --build
-          chmod +x entrypoint.sh
-          ./entrypoint.sh
+          chmod +x app/entrypoint.sh
+          ./app/entrypoint.sh
           docker-compose exec -T movies ruff check . --exclude=env
           docker-compose exec -T movies pytest
           
