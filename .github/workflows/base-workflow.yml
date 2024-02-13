@@ -24,6 +24,6 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run tests
         run: |
-        docker-compose exec -T movies ruff check . --exclude=env
-        docker-compose exec -T movies pytest
+          docker-compose exec -T movies ruff check . --exclude=env
+          docker-compose exec -T movies pytest
           
