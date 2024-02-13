@@ -6,24 +6,18 @@ on:
   pull_request:
 
 jobs:
-
   build-and-test:
-  
-      runs-on: ubuntu-latest
-  
-      steps:
+    runs-on: ubuntu-latest
 
-      - name: Debug file structure
-        run: |
-          pwd
-          ls -la
-          
-      - uses: actions/checkout@v3
-      - name: Run tests
-        run: |
-          docker-compose up -d --build
-          chmod +x app/entrypoint.sh
-          ./app/entrypoint.sh
-          docker-compose exec -T movies ruff check . --exclude=env
-          docker-compose exec -T movies pytest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build and start containers
+      run: docker-compose up -d --build
+
+    - name: Apply migrations, run linters, and tests
+      run: |
+        docker-compose exec -T movies /app/entrypoint.sh
+        docker-compose exec -T movies ruff check . --exclude=env
+        docker-compose exec -T movies pytest
           
