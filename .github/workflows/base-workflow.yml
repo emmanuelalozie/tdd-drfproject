@@ -17,6 +17,7 @@ jobs:
 
     - name: Apply migrations, run linters, and tests
       run: |
+        docker-compose exec -T movies chmod +x ./entrypoint.sh
         docker-compose exec -T movies ./entrypoint.sh
         docker-compose exec -T movies ruff check . --exclude=env
         docker-compose exec -T movies pytest
