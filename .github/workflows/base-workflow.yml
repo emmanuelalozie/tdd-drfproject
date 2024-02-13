@@ -1,0 +1,25 @@
+name: Base Workflow
+
+on:
+  push:
+    branches: [ "develop" ]
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build and start containers
+      run: docker-compose up -d --build
+
+    - name: Apply migrations, run linters, and tests
+      run: |
+        docker-compose exec -T movies chmod +x ./entrypoint.sh
+        docker-compose exec -T movies ./entrypoint.sh
+        docker-compose exec -T movies ruff check . --exclude=env
+        docker-compose exec -T movies pytest
+        docker-compose exec -T movies pytest -p no:warnings --cov=.
+          

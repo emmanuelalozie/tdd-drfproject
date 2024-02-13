@@ -6,6 +6,7 @@ from django.http import Http404
 from .models import Movie
 from .serializers import MovieSerializer
 
+
 class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer

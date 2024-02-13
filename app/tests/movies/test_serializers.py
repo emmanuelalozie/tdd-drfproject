@@ -13,6 +13,7 @@ def test_valid_movie_serializer():
     assert serializer.data == valid_serializer_data
     assert serializer.errors == {}
 
+
 def test_invalid_movie_serializer():
     invalid_serializer_data = {
         "title": "John Wick Chapter 4",

@@ -1,11 +1,10 @@
 # app/tests/movies/test_views.py
 
-import json
 
 import pytest
 
 from movies.models import Movie
-import pdb; pdb.set_trace()
+
 
 @pytest.mark.django_db
 def test_add_movie(client):
@@ -27,6 +26,7 @@ def test_add_movie(client):
     movies = Movie.objects.all()
     assert len(movies) == 1
 
+
 @pytest.mark.django_db
 def test_add_movie_invalid_json(client):
     movies = Movie.objects.all()
@@ -41,6 +41,7 @@ def test_add_movie_invalid_json(client):
 
     movies = Movie.objects.all()
     assert len(movies) == 0
+
 
 @pytest.mark.django_db
 def test_add_movie_invalid_json_keys(client):
@@ -60,6 +61,7 @@ def test_add_movie_invalid_json_keys(client):
     movies = Movie.objects.all()
     assert len(movies) == 0
 
+
 @pytest.mark.django_db
 def test_get_single_movie(client, add_movie):
     movie = add_movie(title="The Big Lebowski", genre="comedy", year="1998")
@@ -68,6 +70,7 @@ def test_get_single_movie(client, add_movie):
     assert resp.data["title"] == "The Big Lebowski"
     assert resp.data["genre"] == "comedy"
     assert resp.data["year"] == "1998"
+
 
 @pytest.mark.django_db
 def test_get_single_movie_incorrect_id(client, add_movie):
@@ -84,4 +87,3 @@ def test_get_all_movies(client, add_movie):
     assert resp.status_code == 200
     assert resp.data[0]["title"] == movie_one.title
     assert resp.data[1]["title"] == movie_two.title
-
