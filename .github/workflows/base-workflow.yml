@@ -1,0 +1,27 @@
+name: Base Workflow
+
+on:
+  push:
+    branches: [ "develop" ]
+  pull_request:
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Start application
+      run: docker-compose up -d --build
+
+  test:
+  
+      runs-on: ubuntu-latest
+  
+      steps:
+      - name: Run tests
+        run: |
+        docker-compose exec movies ruff check . --exclude=env
+        docker-compose exec movies pytest
+          

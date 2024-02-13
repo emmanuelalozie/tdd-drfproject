@@ -1,8 +1,8 @@
-#app/tests/movies/conftest.py
+# app/tests/movies/conftest.py
 
 import pytest
-
 from movies.models import Movie
+
 
 @pytest.fixture(scope='function')
 def add_movie():
