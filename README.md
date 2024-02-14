@@ -56,7 +56,7 @@ docker-compose up -d
 4. **Run Migrations:**
 
 ```sh
-docker-compose exec web python manage.py migrate
+docker-compose exec movies python manage.py migrate
 ```
 
 5. **Running Tests:**
@@ -64,6 +64,6 @@ docker-compose exec web python manage.py migrate
 Ensure your application works correctly by running:
 
 ```sh
-docker-compose exec web pytest
+docker-compose exec movies pytest
 ```
 The README will continue to be updated as progress is made on the project.
