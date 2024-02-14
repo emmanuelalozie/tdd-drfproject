@@ -65,3 +65,4 @@ Ensure your application works correctly by running:
 ```sh
 docker-compose exec web pytest
 ```
+The README will continue to be updated as progress is made on the project.
