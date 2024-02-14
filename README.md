@@ -15,6 +15,7 @@ This project demonstrates how to set up a development environment using Docker t
 - **Docker**: A set of platform-as-a-service (PaaS) products that use OS-level virtualization to deliver software in packages called containers.
 - **pytest**: A framework that makes it easy to write simple tests, yet scales to support complex functional testing.
 - **GitHub Actions**: Used for Continuous Integration/Continuous Deployment (CI/CD) workflows to automate testing and deployment processes.
+- **Ruff**: An extremely fast Python linter, designed to help enforce code style and quality standards.
 
 ## Project Goals
 
